@@ -27,7 +27,7 @@ import type { AccountItemState, CatalogModelOption, RuleItemState, SettingsPageS
 import type { LoginPageState } from './login.ts'
 import { LoginRow } from './login-row.tsx'
 import type { UsagePageState } from './usage.ts'
-import { formatMoney, formatMoneyExact, formatResetAt, formatTokensCompact, windowRatio } from './usage.ts'
+import { formatMoney, formatMoneyExact, formatPercent, formatResetAt, formatTokensCompact, windowRatio } from './usage.ts'
 import { PLUGIN_RELEASES_URL, PLUGIN_VERSION } from './version.ts'
 import { checkForUpdate, localStorageUpdateStore } from './update.ts'
 
@@ -477,7 +477,7 @@ function AccountReport({ entry, fetchedAt, t, onRemove }: {
             value={String(report.usage.completedCount)}
             sub={`${t('usageFailed')} ${report.usage.failedCount}`}
           />
-          <UsageStat label={t('usageSuccessRate')} value={`${report.usage.successRate}%`} />
+          <UsageStat label={t('usageSuccessRate')} value={formatPercent(report.usage.successRate)} />
           <UsageStat
             label={t('usageCost')}
             value={formatMoneyExact(report.usage.totalCost)}

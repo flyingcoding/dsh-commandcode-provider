@@ -13,6 +13,7 @@ import {
   CommandCodeUsageController,
   formatMoney,
   formatMoneyExact,
+  formatPercent,
   formatResetAt,
   formatTokensCompact,
   windowRatio,
@@ -146,6 +147,13 @@ test('formatTokensCompact renders K/M/B suffixes', () => {
   assert.equal(formatTokensCompact(1_900_000), '1.9M')
   assert.equal(formatTokensCompact(2_500), '2.5K')
   assert.equal(formatTokensCompact(3_000_000_000), '3.0B')
+})
+
+test('formatPercent renders a percentage with 2 decimals', () => {
+  assert.equal(formatPercent(99.9882890268181), '99.99%')
+  assert.equal(formatPercent(100), '100.00%')
+  assert.equal(formatPercent(99), '99.00%')
+  assert.equal(formatPercent(0), '0.00%')
 })
 
 test('windowRatio clamps into [0, 1] and treats cap 0 as empty', () => {

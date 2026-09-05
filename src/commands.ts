@@ -139,7 +139,7 @@ function renderReport(report: CommandCodeUsageReport, locale: LocaleId, title?: 
       commandCopy(locale, 'requestsLine')
         .replace('{n}', String(u.completedCount))
         .replace('{f}', String(u.failedCount))
-        .replace('{r}', String(u.successRate)),
+        .replace('{r}', u.successRate.toFixed(2)),
       commandCopy(locale, 'costLine')
         .replace('{money}', money(u.totalCost))
         .replace('{credits}', moneyShort(u.totalCredits)),

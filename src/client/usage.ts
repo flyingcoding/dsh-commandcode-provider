@@ -173,6 +173,11 @@ export function formatTokensCompact(value: number): string {
   return String(value)
 }
 
+/** Format a rate as a percentage with 2 decimals (99.99% style). */
+export function formatPercent(value: number): string {
+  return `${value.toFixed(2)}%`
+}
+
 /** One window's fill ratio in [0, 1]; 0 when uncapped. */
 export function windowRatio(used: number, cap: number): number {
   if (cap <= 0) return 0
